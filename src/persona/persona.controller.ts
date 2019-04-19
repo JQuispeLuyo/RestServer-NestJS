@@ -14,22 +14,22 @@ export class PersonaController {
     }
 
     @Get(':NUMPER')
-    async getPersona(@Param('NUMPER') NUMPER){
+    async getPersona(@Param('NUMPER') NUMPER): Promise<Persona>{
         return await this.personaService.read(NUMPER);
     }
 
     @Post()
-    async crearPersona(@Body() persona: PersonaDto){
+    async crearPersona(@Body() persona: PersonaDto): Promise<Persona>{
         return await this.personaService.create(persona);
     }
 
     @Put(':NUMPER')
-    async actualizarPersona(@Body() persona: PersonaDto, @Param('NUMPER') NUMPER){
+    async actualizarPersona(@Body() persona: PersonaDto, @Param('NUMPER') NUMPER): Promise<Persona>{
         return await this.personaService.update(NUMPER,persona);
     }
 
     @Delete(':NUMPER')
-    async borrarPersona(@Param('NUMPER') NUMPER){
+    async borrarPersona(@Param('NUMPER') NUMPER): Promise<Persona>{
         return await this.personaService.delete(NUMPER);
     }
 
