@@ -1,0 +1,10 @@
+{
+    "type": "mssql",
+    "host": "localhost",
+    "port": 1433,
+    "username": "sa",
+    "password": "dificil",
+    "database": "dbCropAW",
+    "entities": ["./src/**/*.entity.ts","./dist/**/*.entity.js"],
+    "synchronize": true
+}
