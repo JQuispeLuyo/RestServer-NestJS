@@ -2,7 +2,7 @@ import { Controller, Get, Post, Put, Delete, Body, HttpCode, Param} from '@nestj
 import { CreateTaskDto } from './dto/create-task.dto';
 import { TasksService } from './tasks.service';
 
-import { Tasks } from '../interfaces/tasks.interface';
+import { Tasks } from './interfaces/tasks.interface';
 
 @Controller('tasks')
 export class TasksController {
