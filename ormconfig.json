@@ -5,6 +5,7 @@
     "username": "sa",
     "password": "dificil",
     "database": "dbCropAW",
-    "entities": ["./src/**/*.entity.ts","./dist/**/*.entity.js"],
-    "synchronize": true
+    "synchronize": true,
+    "logging": false,
+    "entities": ["./src/**/*.entity.ts", "./dist/**/*.entity.js"]
 }

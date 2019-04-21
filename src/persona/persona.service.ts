@@ -13,24 +13,26 @@ export class PersonaService {
     ){}
 
     async findAll(){
+        
+        //return await this.personaRepository.find();
         return await this.personaRepository.find();
-    }
-
-    async create(data: PersonaDto){
-        const persona = await this.personaRepository.create(data);
-        await this.personaRepository.save(persona);
-        return persona;
-    }
-
-    async update(NUMPER: number, data: PersonaDto){
-        const persona = await this.personaRepository.findOne({where: {NUMPER}});
-        await this.personaRepository.update({NUMPER},data);
-        return persona;
     }
 
     async read(NUMPER: number){
         let persona = await this.personaRepository.findOne({where: {NUMPER}});
         return persona; 
+    }
+
+    async create(data: Partial<PersonaDto>){
+        const persona = await this.personaRepository.create(data);
+        await this.personaRepository.save(persona);
+        return persona;
+    }
+
+    async update(NUMPER: number, data: Partial<PersonaDto>){
+        const persona = await this.personaRepository.findOne({where: {NUMPER}});
+        await this.personaRepository.update({NUMPER},data);
+        return persona;
     }
 
     async delete(NUMPER: number){
