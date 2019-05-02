@@ -1,5 +1,5 @@
 export class PersonaDto {
-    NUMPER: number;
+    IDPER: number;
     NOMPER: string;
     APEPER: string;
     DNIPER: string;

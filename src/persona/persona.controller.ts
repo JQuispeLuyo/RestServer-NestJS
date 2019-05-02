@@ -13,9 +13,9 @@ export class PersonaController {
         return await this.personaService.findAll();
     }
 
-    @Get(':NUMPER')
-    async getPersona(@Param('NUMPER') NUMPER: string): Promise<Persona>{
-        return await this.personaService.read(parseInt(NUMPER));
+    @Get(':IDPER')
+    async getPersona(@Param('IDPER') IDPER: string): Promise<Persona>{
+        return await this.personaService.read(parseInt(IDPER));
     }
 
     @Post()
@@ -23,14 +23,14 @@ export class PersonaController {
         return await this.personaService.create(persona);
     }
 
-    @Put(':NUMPER')
-    async actualizarPersona(@Body() persona: PersonaDto, @Param('NUMPER') NUMPER:string): Promise<Persona>{
-        return await this.personaService.update(parseInt(NUMPER),persona);
+    @Put(':IDPER')
+    async actualizarPersona(@Body() persona: PersonaDto, @Param('NUMPER') IDPER:string): Promise<Persona>{
+        return await this.personaService.update(parseInt(IDPER),persona);
     }
 
-    @Delete(':NUMPER')
-    async borrarPersona(@Param('NUMPER') NUMPER: string): Promise<Persona>{
-        return await this.personaService.delete(parseInt(NUMPER));
+    @Delete(':IDPER')
+    async borrarPersona(@Param('NUMPER') IDPER: string): Promise<Persona>{
+        return await this.personaService.delete(parseInt(IDPER));
     }
 
 }

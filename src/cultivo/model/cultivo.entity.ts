@@ -1,10 +1,10 @@
-import { Entity, PrimaryColumn, Column } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('INFORMACION.CULTIVO')
 export class Cultivo{
 
-    @PrimaryColumn()
-    NUMCUL: number;
+    @PrimaryGeneratedColumn()
+    IDCUL: number;
 
     @Column("varchar",{length:50})
     NOMCUL: string

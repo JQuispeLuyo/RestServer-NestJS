@@ -1,9 +1,9 @@
-import { Entity, PrimaryColumn, Column } from 'typeorm';
+import { Entity, Column,PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('PERSONA.PERSONA')
 export class Persona{
-    @PrimaryColumn()
-    NUMPER: number;
+    @PrimaryGeneratedColumn()
+    IDPER: number;
 
     @Column("varchar",{length: 100})
     NOMPER: string;

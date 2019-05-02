@@ -15,8 +15,8 @@ export class CultivoService {
         return this.cultivoRepository.find();
     }
 
-    async getCultivo(NUMCUL: number){
-        return this.cultivoRepository.findOne({NUMCUL});
+    async getCultivo(IDCUL: number){
+        return this.cultivoRepository.findOne({IDCUL});
     }
 
     async getTipCultivo(TIPCUL: string){

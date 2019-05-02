@@ -18,8 +18,8 @@ export class PersonaService {
         return await this.personaRepository.find();
     }
 
-    async read(NUMPER: number){
-        let persona = await this.personaRepository.findOne({where: {NUMPER}});
+    async read(IDPER: number){
+        let persona = await this.personaRepository.findOne({where: {IDPER}});
         return persona; 
     }
 
@@ -29,15 +29,15 @@ export class PersonaService {
         return persona;
     }
 
-    async update(NUMPER: number, data: Partial<PersonaDto>){
-        const persona = await this.personaRepository.findOne({where: {NUMPER}});
-        await this.personaRepository.update({NUMPER},data);
+    async update(IDPER: number, data: Partial<PersonaDto>){
+        const persona = await this.personaRepository.findOne({where: {IDPER}});
+        await this.personaRepository.update({IDPER},data);
         return persona;
     }
 
-    async delete(NUMPER: number){
-        const persona = await this.personaRepository.findOne({where:{NUMPER}});
-        await this.personaRepository.delete({NUMPER});
+    async delete(IDPER: number){
+        const persona = await this.personaRepository.findOne({where:{IDPER}});
+        await this.personaRepository.delete({IDPER});
         return persona;
     }
 

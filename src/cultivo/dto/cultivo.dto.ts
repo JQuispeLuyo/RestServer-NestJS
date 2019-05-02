@@ -1,5 +1,5 @@
 export class CultivoDto{
-    NUMCUL: number;
+    IDCUL: number;
     NOMCUL: string;
     TIPCUL: string
 }

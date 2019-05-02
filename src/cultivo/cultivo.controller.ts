@@ -11,9 +11,9 @@ export class CultivoController {
         return this.cultivoService.getAll();
     }
 
-    @Get(':NUMCUL')
-    readCultivo(@Param('NUMCUL') NUMCUL: string){
-        return this.cultivoService.getCultivo(parseInt(NUMCUL));
+    @Get(':IDCUL')
+    readCultivo(@Param('IDCUL') IDCUL: string){
+        return this.cultivoService.getCultivo(parseInt(IDCUL));
     }
 
     @Get('tipo/:TIPCUL')
