@@ -1,11 +1,10 @@
 {
     "type": "mssql",
     "host": "34.73.201.76",
-    "port": 1433,
     "username": "User08",
     "password": "User08-20199",
     "database": "Team08",
-    "synchronize": true,
+    "synchronize": false,
     "logging": false,
-    "entities": ["./src/**/*.entity.ts", "./dist/**/*.entity.js"]
+    "entities": ["dist/**/**.entity{.ts,.js}"]
 }

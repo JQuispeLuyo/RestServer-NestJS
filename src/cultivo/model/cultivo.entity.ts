@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import {Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('INFORMACION.CULTIVO')
 export class Cultivo{
