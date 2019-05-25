@@ -18,6 +18,7 @@ export class DetalleInformacionService {
     }
 
     async create(data: Partial<DetalleInformacionDto>){
+        console.log(data);
         const detalleInformacion = await this.detInfoRepository.create(data);
         await this.detInfoRepository.save(detalleInformacion);
         return detalleInformacion;
