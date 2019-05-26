@@ -1,9 +1,9 @@
 {
     "type": "mssql",
-    "host": "localhost",
-    "username": "sa",
-    "password": "dificil",
-    "database": "dbCropAW",
+    "host": "34.73.201.76",
+    "username": "User08",
+    "password": "User08-20199",
+    "database": "Team08",
     "synchronize": false,
     "logging": false,
     "entities": ["dist/**/**.entity{.ts,.js}"]
