@@ -2,7 +2,7 @@
     "type": "mssql",
     "host": "34.73.201.76",
     "username": "User08",
-    "password": "User08-20199",
+    "password": "CropAW-Pass",
     "database": "Team08",
     "synchronize": false,
     "logging": false,

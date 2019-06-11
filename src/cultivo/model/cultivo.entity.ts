@@ -11,4 +11,7 @@ export class Cultivo{
 
     @Column("char",{length:2})
     TIPCUL: string
+
+    @Column("char", {length:1})
+    ESTACUL: string
 }

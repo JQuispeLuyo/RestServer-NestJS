@@ -13,7 +13,7 @@ export class DetalleInformacionDto{
     VERDMES: number;
     PRODDET: number;
     PRECHA:	number;
-    FECCOS:	string;
+    FECCOS:	Date;
     VALDET:	string;
-
+    ESTADETINFO: string;
 }
