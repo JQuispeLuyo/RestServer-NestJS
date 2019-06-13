@@ -29,9 +29,9 @@ export class PersonaService {
         return persona;
     }
 
-    async update(IDPER: number, data: Partial<PersonaDto>){
-        const persona = await this.personaRepository.findOne({where: {IDPER}});
+    async update(IDPER: number, data: Partial<PersonaDto>){  
         await this.personaRepository.update({IDPER},data);
+        const persona = await this.personaRepository.findOne({where: {IDPER}});
         return persona;
     }
 
@@ -39,6 +39,11 @@ export class PersonaService {
         const persona = await this.personaRepository.findOne({where:{IDPER}});
         await this.personaRepository.delete({IDPER});
         return persona;
+    }
+
+    async findByUserName(USERPER: string){
+        const userName = await this.personaRepository.findOne({where: {USERPER}});
+        return userName;
     }
 
 }
