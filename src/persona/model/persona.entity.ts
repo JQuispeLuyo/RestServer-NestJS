@@ -1,4 +1,6 @@
+import { UserDto} from './../dto/user.dto';
 import { Entity, Column,PrimaryGeneratedColumn } from 'typeorm';
+import * as jwt from 'jsonwebtoken';
 
 @Entity('PERSONA.PERSONA')
 export class Persona{
@@ -28,5 +30,28 @@ export class Persona{
 
     @Column("varchar",{length: 500})
     PSWPER: string;
+
+    toResponseObjet(showToken: boolean = true): UserDto{
+        const { IDPER, NOMPER, APEPER, token} = this;
+
+        const responseObjet:any = { IDPER, NOMPER, APEPER};
+
+        if(showToken){
+            responseObjet.token = token;
+        }
+
+        return responseObjet;
+    }
+
+    async comparePassword(attemp: string){
+        return (attemp === this.PSWPER);
+    }
+
+    private get token (){
+        const {IDPER, USERPER } = this;
+        return jwt.sign({
+            IDPER, USERPER
+        },process.env.SECRET || "secretKey", {expiresIn: '7d'});
+    }
 
 }

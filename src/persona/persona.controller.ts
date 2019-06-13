@@ -1,19 +1,26 @@
-import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nestjs/common';
 import { PersonaDto } from './dto/persona.dto';
 import { Persona } from './interfaces/persona.interface';
 import { PersonaService } from './persona.service';
-import { AuthService } from '../auth/auth.service';
+import { UserDto } from './dto/user.dto';
+import { AuthGuard } from 'src/shared/auth.guard';
+import { User } from './persona.decorator';
+
 
 @Controller('persona')
 export class PersonaController {
 
-    constructor(private personaService: PersonaService,
-        private readonly authService: AuthService) { }
+    constructor(private personaService: PersonaService) { }
 
- 
+    @Post('login')
+    login(@Body() data: UserDto){
+        return this.personaService.login(data);
+    }
 
     @Get()
-    async getPersonas(): Promise<Persona[]> {
+    @UseGuards(new AuthGuard())
+    async getPersonas(@User('USERPER') user): Promise<Persona[]> {
+        console.log(user);
         return await this.personaService.findAll();
     }
 

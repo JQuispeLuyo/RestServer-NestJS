@@ -5,10 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PersonaModule } from './persona/persona.module';
 import { CultivoModule } from './cultivo/cultivo.module';;
 import { DetalleInformacionModule } from './detalle-informacion/detalle-informacion.module';
-import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), PersonaModule, CultivoModule, DetalleInformacionModule, AuthModule],
+  imports: [TypeOrmModule.forRoot(), PersonaModule, CultivoModule, DetalleInformacionModule,],
   controllers: [AppController],
   providers: [AppService],
 })
