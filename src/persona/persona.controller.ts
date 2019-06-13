@@ -3,7 +3,7 @@ import { PersonaDto } from './dto/persona.dto';
 import { Persona } from './interfaces/persona.interface';
 import { PersonaService } from './persona.service';
 import { UserDto } from './dto/user.dto';
-import { AuthGuard } from 'src/shared/auth.guard';
+import { AuthGuard } from './../shared/auth.guard';
 import { User } from './persona.decorator';
 
 
@@ -19,8 +19,7 @@ export class PersonaController {
 
     @Get()
     @UseGuards(new AuthGuard())
-    async getPersonas(@User('USERPER') user): Promise<Persona[]> {
-        console.log(user);
+    async getPersonas(@User() user): Promise<Persona[]> {
         return await this.personaService.findAll();
     }
 

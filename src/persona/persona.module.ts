@@ -4,6 +4,7 @@ import { PersonaController } from './persona.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Persona } from './model/persona.entity';
 
+
 @Module({
     imports: [
         TypeOrmModule.forFeature([Persona]),  
