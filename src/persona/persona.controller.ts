@@ -43,4 +43,10 @@ export class PersonaController {
         return await this.personaService.delete(parseInt(IDPER));
     }
 
+    @Get('asig/:IDPER')
+    getCultivosAsig(@Param('IDPER') IDPER: string){
+        console.log(IDPER);
+        return this.personaService.asignacion(IDPER);
+    }
+
 }

@@ -22,5 +22,5 @@ export class CultivoService {
     async getTipCultivo(TIPCUL: string){
         return this.cultivoRepository.find({TIPCUL});
     }
-
+   
 }

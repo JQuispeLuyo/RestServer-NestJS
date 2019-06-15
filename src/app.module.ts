@@ -5,9 +5,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PersonaModule } from './persona/persona.module';
 import { CultivoModule } from './cultivo/cultivo.module';;
 import { DetalleInformacionModule } from './detalle-informacion/detalle-informacion.module';
+import { AsignacionCultivoModule } from './asignacion-cultivo/asignacion-cultivo.module';
+import { AsignacionPersonaModule } from './asignacion-persona/asignacion-persona.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), PersonaModule, CultivoModule, DetalleInformacionModule,],
+  imports: [TypeOrmModule.forRoot(), PersonaModule, CultivoModule, DetalleInformacionModule, AsignacionCultivoModule, AsignacionPersonaModule,],
   controllers: [AppController],
   providers: [AppService],
 })
