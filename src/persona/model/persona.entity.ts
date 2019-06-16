@@ -1,5 +1,6 @@
+import { AsignacionPersona } from './../../asignacion-persona/model/asignacion-persona.entity';
 import { UserDto} from './../dto/user.dto';
-import { Entity, Column,PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column,PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
 import * as jwt from 'jsonwebtoken';
 
 @Entity('PERSONA.PERSONA')
@@ -30,6 +31,9 @@ export class Persona{
 
     @Column("varchar",{length: 500})
     PSWPER: string;
+
+    @OneToMany(type => AsignacionPersona, asignacionPersona => asignacionPersona.persona)
+    asignacionPersona: AsignacionPersona[];
 
     toResponseObjet(showToken: boolean = true): UserDto{
         const { IDPER, NOMPER, APEPER, token} = this;

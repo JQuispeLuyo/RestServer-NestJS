@@ -1,20 +1,29 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Sector } from './../../sector/model/sector.entity';
+import { Persona } from './../../persona/model/persona.entity';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 
 @Entity('PERSONA.ASIGNACION_PERSONA')
 export class AsignacionPersona{
     @PrimaryGeneratedColumn()
-    IDASIGPER:number
+    IDASIGPER:number;
 
     @Column()
-    FECASIG: Date
+    FECASIG: Date;
 
     @Column()
-    IDSECT:number
+    IDSECT:number;
 
     @Column()
-    IDPER:number 
+    IDPER:number; 
 
     @Column("char", {length:1})
-    ESTAPER	
+    ESTAPER;
 
+    @ManyToOne(type=> Sector, sector => sector.asignacionPersona)
+    @JoinColumn({ name: "IDSECT" })
+    sector: Sector;
+
+    @ManyToOne(type=> Persona, persona => persona.asignacionPersona)
+    @JoinColumn({ name: "IDPER" })
+    persona: Persona;
 }

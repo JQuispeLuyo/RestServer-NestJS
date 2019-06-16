@@ -58,32 +58,4 @@ export class PersonaService {
         return user.toResponseObjet();
     }
 
-
-    async asignacion(IDPER: string) {
-        console.log(IDPER);
-        let query = `SELECT	A.IDASIGPER AS ID, 
-                                        A.FECASIG AS Fecha, 
-                                        U.IDSECT, 
-                                        U.NOMSECT AS Ubicacion, 
-                                        P.IDPER, 
-                                        P.APEPER + ' ' + P.NOMPER AS Nombre, 
-                                        P.ESTAPER, 
-                                        A.ESTAPER AS ESTASIGPER,
-                                        C.NOMCUL
-                    FROM    PERSONA.ASIGNACION_PERSONA AS A 
-                            INNER JOIN PERSONA.PERSONA AS P 
-                                ON A.IDPER = P.IDPER 
-                            INNER JOIN UBICACION.SECTOR AS U 
-                                ON A.IDSECT = U.IDSECT
-                            INNER JOIN	INFORMACION.ASIGNACION_CULTIVO as AC
-                                ON AC.IDSECT = U.IDSECT
-                            inner join INFORMACION.CULTIVO as C
-                                on AC.IDCUL = C.IDCUL
-                    where P.IDPER=${IDPER}`;
-
-        const asig = await this.personaRepository.query(query);
-        return asig;
-    }
-
-
 }

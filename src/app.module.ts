@@ -7,9 +7,10 @@ import { CultivoModule } from './cultivo/cultivo.module';;
 import { DetalleInformacionModule } from './detalle-informacion/detalle-informacion.module';
 import { AsignacionCultivoModule } from './asignacion-cultivo/asignacion-cultivo.module';
 import { AsignacionPersonaModule } from './asignacion-persona/asignacion-persona.module';
+import { SectorModule } from './sector/sector.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), PersonaModule, CultivoModule, DetalleInformacionModule, AsignacionCultivoModule, AsignacionPersonaModule,],
+  imports: [TypeOrmModule.forRoot(), PersonaModule, CultivoModule, DetalleInformacionModule, AsignacionCultivoModule, AsignacionPersonaModule, SectorModule,],
   controllers: [AppController],
   providers: [AppService],
 })
