@@ -36,9 +36,9 @@ export class Persona{
     asignacionPersona: AsignacionPersona[];
 
     toResponseObjet(showToken: boolean = true): UserDto{
-        const { IDPER, NOMPER, APEPER, token} = this;
+        const { IDPER, NOMPER, APEPER, DNIPER, TELPER, TIPPER, ESTAPER, USERPER, token} = this;
 
-        const responseObjet:any = { IDPER, NOMPER, APEPER};
+        const responseObjet:any = {IDPER, NOMPER, APEPER, DNIPER, TELPER, TIPPER, ESTAPER, USERPER};
 
         if(showToken){
             responseObjet.token = token;

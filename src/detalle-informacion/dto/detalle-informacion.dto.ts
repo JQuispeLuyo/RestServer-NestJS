@@ -2,7 +2,7 @@ export class DetalleInformacionDto{
 
     IDDETINFO: number;
     IDINFO: number;
-    IDCUL:	number;
+    IDASIGCUL:	number;
     CREDET:	number;
     PRODET:	number;
     SEMDET:	number;

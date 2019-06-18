@@ -10,7 +10,7 @@ export class DetalleInformacion{
     IDINFO: number;
 
     @Column("int")
-    IDCUL:	number;
+    IDASIGCUL:	number;
 
     @Column("decimal",{ precision: 7, scale: 2 })
     CREDET:	number;

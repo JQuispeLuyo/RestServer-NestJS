@@ -17,7 +17,9 @@ export class AsignacionCultivoService {
 
     async asigPersona(IDPER: string) {
         console.log(IDPER);
-        let query = `SELECT	U.IDSECT,
+        let query = `SELECT	A.IDASIGPER,
+                            AC.IDASIGCUL,
+                            U.IDSECT,
                             C.*
                     FROM    PERSONA.ASIGNACION_PERSONA AS A 
                             INNER JOIN PERSONA.PERSONA AS P 
