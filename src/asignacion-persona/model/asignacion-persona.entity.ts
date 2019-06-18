@@ -17,7 +17,7 @@ export class AsignacionPersona{
     IDPER:number; 
 
     @Column("char", {length:1})
-    ESTAPER;
+    ESTASIGPER;
 
     @ManyToOne(type=> Sector, sector => sector.asignacionPersona)
     @JoinColumn({ name: "IDSECT" })

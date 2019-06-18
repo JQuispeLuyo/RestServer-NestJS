@@ -24,9 +24,9 @@ export class AsignacionCultivoService {
                                 ON A.IDPER = P.IDPER 
                             INNER JOIN UBICACION.SECTOR AS U 
                                 ON A.IDSECT = U.IDSECT
-                            INNER JOIN	INFORMACION.ASIGNACION_CULTIVO as AC
+                            INNER JOIN	CULTIVO.ASIGNACION_CULTIVO as AC
                                 ON AC.IDSECT = U.IDSECT
-                            inner join INFORMACION.CULTIVO as C
+                            inner join CULTIVO.CULTIVO as C
                                 on AC.IDCUL = C.IDCUL
                     where P.IDPER=${IDPER}`;
 
