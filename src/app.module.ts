@@ -8,9 +8,10 @@ import { DetalleInformacionModule } from './detalle-informacion/detalle-informac
 import { AsignacionCultivoModule } from './asignacion-cultivo/asignacion-cultivo.module';
 import { AsignacionPersonaModule } from './asignacion-persona/asignacion-persona.module';
 import { SectorModule } from './sector/sector.module';
+import { InformacionModule } from './informacion/informacion.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), PersonaModule, CultivoModule, DetalleInformacionModule, AsignacionCultivoModule, AsignacionPersonaModule, SectorModule,],
+  imports: [TypeOrmModule.forRoot(), PersonaModule, CultivoModule, DetalleInformacionModule, AsignacionCultivoModule, AsignacionPersonaModule, SectorModule, InformacionModule,],
   controllers: [AppController],
   providers: [AppService],
 })
