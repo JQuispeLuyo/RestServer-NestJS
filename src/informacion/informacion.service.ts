@@ -1,3 +1,4 @@
+import { DataI } from './interfaces/interfaces';
 import { Informacion } from './model/informacion.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -14,5 +15,19 @@ export class InformacionService {
     async getAllInformacion(){
         return this.informacionRepository.find();
     }
+
+    async getCabecerasInformacion(data:DataI){
+        let sql = `select	I.IDINFO,
+                            I.IDASIG,
+                            I.TOTAREDET,
+                            I.ESTAINFO, 
+                            A.IDSECT
+                        from INFORMACION.INFORMACION AS I 
+                            inner join PERSONA.ASIGNACION_PERSONA AS A
+                                ON A.IDASIGPER = I.IDASIG
+                        where A.IDPER = ${data.IDPER} and I.FECINFO >= '${data.FECINFO}'`;
+
+        return this.informacionRepository.query(sql);
+    }  
     
 }

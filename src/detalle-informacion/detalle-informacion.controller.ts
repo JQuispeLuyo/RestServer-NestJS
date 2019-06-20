@@ -1,3 +1,4 @@
+import { DataI } from './../informacion/interfaces/interfaces';
 import { DetalleInformacionDto } from './dto/detalle-informacion.dto';
 import { DetalleInformacionService } from './detalle-informacion.service';
 import { Controller, Get, Post, Body } from '@nestjs/common';
@@ -18,6 +19,11 @@ export class DetalleInformacionController {
     async createDetalleInformacion(@Body() detInfo: DetalleInformacionDto){
         console.log(detInfo);
         return await this.detInfoService.create(detInfo);
+    }
+
+    @Post('anterior')
+    async getMesAnteriorInformacion(@Body() data:DataI){
+        return this.detInfoService.getTotalAnterior(data);
     }
 
     
