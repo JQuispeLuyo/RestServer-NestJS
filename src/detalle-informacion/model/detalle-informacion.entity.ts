@@ -48,4 +48,6 @@ export class DetalleInformacion{
     @Column("char",{length:1})
     VALDET:	string;
 
+    @Column("char", {length:1})
+    ESTADETINFO: string
 }

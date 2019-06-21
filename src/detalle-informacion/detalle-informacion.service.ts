@@ -38,7 +38,19 @@ export class DetalleInformacionService {
                                 ON I.IDINFO = ID.IDINFO
                             inner join PERSONA.ASIGNACION_PERSONA AS A
                                 ON A.IDASIGPER = I.IDASIG
-                        where A.IDPER = ${data.IDPER} and I.FECINFO between '${data.FECINFOANTE}' and '${data.FECINFO}'`;
+                        where A.IDPER = ${data.IDPER} and I.FECINFO between '${data.FECINFOP}' and '${data.FECINFOU}'`;
+
+        return this.detInfoRepository.query(sql);
+    }
+
+    async getDetallesActual(data: DataI){
+        let sql = `select	ID.*
+                        from INFORMACION.INFORMACION AS I 
+                            inner join INFORMACION.DETALLE_INFORMACION AS ID
+                                ON I.IDINFO = ID.IDINFO
+                            inner join PERSONA.ASIGNACION_PERSONA AS A
+                                ON A.IDASIGPER = I.IDASIG
+                        where A.IDPER = ${data.IDPER} and I.FECINFO between '${data.FECINFOP}' and '${data.FECINFOU}'`;
 
         return this.detInfoRepository.query(sql);
     }

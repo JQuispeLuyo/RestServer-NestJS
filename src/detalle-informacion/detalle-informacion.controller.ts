@@ -26,6 +26,11 @@ export class DetalleInformacionController {
         return this.detInfoService.getTotalAnterior(data);
     }
 
+    @Post('actual')
+    async getMesActualInformacion(@Body() data:DataI){
+        return this.detInfoService.getDetallesActual(data);
+    }
+
     
 
 }

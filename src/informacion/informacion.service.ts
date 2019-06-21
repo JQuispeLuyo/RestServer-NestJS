@@ -25,7 +25,7 @@ export class InformacionService {
                         from INFORMACION.INFORMACION AS I 
                             inner join PERSONA.ASIGNACION_PERSONA AS A
                                 ON A.IDASIGPER = I.IDASIG
-                        where A.IDPER = ${data.IDPER} and I.FECINFO >= '${data.FECINFO}'`;
+                        where A.IDPER = ${data.IDPER} and I.FECINFO between '${data.FECINFOP}' and '${data.FECINFOU}'`;
 
         return this.informacionRepository.query(sql);
     }  
