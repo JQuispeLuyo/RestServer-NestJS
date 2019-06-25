@@ -42,6 +42,9 @@ export class DetalleInformacion{
     @Column("decimal",{ precision: 7, scale: 2 })
     PRECHA:	number;
 
+    @Column("decimal",{ precision: 7, scale: 2 })
+    VERMESANT: number;
+
     @Column()
     FECCOS:	Date;
 
