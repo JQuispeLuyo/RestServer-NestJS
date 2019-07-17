@@ -21,7 +21,7 @@ export class AsignacionPersonaService {
                         from PERSONA.ASIGNACION_PERSONA AS P
                             inner join UBICACION.SECTOR AS U
                                 ON P.IDSECT = U.IDSECT
-                        where P.IDPER = ${IDPER}`;
+                        where P.IDPER = ${IDPER} and ESTASIGPER = 'A'`;
 
         return this.personaAsignacionRepository.query(sql);
     }

@@ -30,7 +30,7 @@ export class AsignacionCultivoService {
                                 ON AC.IDSECT = U.IDSECT
                             inner join CULTIVO.CULTIVO as C
                                 on AC.IDCUL = C.IDCUL
-                    where P.IDPER=${IDPER}`;
+                    where P.IDPER=${IDPER} and AC.ESTAASIGCUL = 'A'`;
 
         const asig = await this.asigCultivoRepository.query(query);
         return asig;
