@@ -2,6 +2,7 @@ import { AsignacionPersona } from './../../asignacion-persona/model/asignacion-p
 import { UserDto} from './../dto/user.dto';
 import { Entity, Column,PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
 import * as jwt from 'jsonwebtoken';
+var md5 = require('md5');
 
 @Entity('PERSONA.PERSONA')
 export class Persona{
@@ -48,7 +49,7 @@ export class Persona{
     }
 
     async comparePassword(attemp: string){
-        return (attemp === this.PSWPER);
+        return (md5(attemp) === this.PSWPER);
     }
 
     private get token (){
