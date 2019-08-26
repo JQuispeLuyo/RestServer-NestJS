@@ -38,7 +38,10 @@ export class DetalleInformacionService {
                                 ON I.IDINFO = ID.IDINFO
                             inner join PERSONA.ASIGNACION_PERSONA AS A
                                 ON A.IDASIGPER = I.IDASIG
-                        where A.IDPER = ${data.IDPER} and I.FECINFO between '${data.FECINFOP}' and '${data.FECINFOU}'`;
+                        where A.IDPER = ${data.IDPER} 
+                            and I.FECINFO 
+                                between DATEADD(mm,DATEDIFF(mm,0,DATEADD(hh,-5,GETUTCDATE()))-1,0)
+                                and DATEADD(ss,-1,DATEADD(mm,DATEDIFF(mm,0,DATEADD(hh,-5,GETUTCDATE())),0))`;
 
         return this.detInfoRepository.query(sql);
     }
@@ -50,7 +53,10 @@ export class DetalleInformacionService {
                                 ON I.IDINFO = ID.IDINFO
                             inner join PERSONA.ASIGNACION_PERSONA AS A
                                 ON A.IDASIGPER = I.IDASIG
-                        where A.IDPER = ${data.IDPER} and I.FECINFO between '${data.FECINFOP}' and '${data.FECINFOU}'`;
+                        where A.IDPER = ${data.IDPER} 
+                            and I.FECINFO 
+                                between DATEADD(mm,DATEDIFF(mm,0,DATEADD(hh,-5,GETUTCDATE())),0)
+                                and DATEADD(ss,-1,DATEADD(mm,DATEDIFF(mm,0,DATEADD(hh,-5,GETUTCDATE()))+1,0))`;
 
         return this.detInfoRepository.query(sql);
     }
