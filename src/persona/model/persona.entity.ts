@@ -4,7 +4,7 @@ import { Entity, Column,PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'ty
 import * as jwt from 'jsonwebtoken';
 var md5 = require('md5');
 
-@Entity('PERSONA.PERSONA')
+@Entity('PERSONA')
 export class Persona{
     @PrimaryGeneratedColumn()
     IDPER: number;
@@ -49,7 +49,8 @@ export class Persona{
     }
 
     async comparePassword(attemp: string){
-        return (md5(attemp) === this.PSWPER);
+        //return (md5(attemp) === this.PSWPER);
+        return (attemp === this.PSWPER);
     }
 
     private get token (){

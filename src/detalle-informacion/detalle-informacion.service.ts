@@ -33,30 +33,30 @@ export class DetalleInformacionService {
                             ID.IDASIGCUL,
                             ID.VERDMES,
                             ID.FECCOS
-                        from INFORMACION.INFORMACION AS I 
-                            inner join INFORMACION.DETALLE_INFORMACION AS ID
+                        from INFORMACION I 
+                            inner join DETALLE_INFORMACION ID
                                 ON I.IDINFO = ID.IDINFO
-                            inner join PERSONA.ASIGNACION_PERSONA AS A
+                            inner join ASIGNACION_PERSONA A
                                 ON A.IDASIGPER = I.IDASIG
                         where A.IDPER = ${data.IDPER} 
                             and I.FECINFO 
-                                between DATEADD(mm,DATEDIFF(mm,0,DATEADD(hh,-5,GETUTCDATE()))-1,0)
-                                and DATEADD(ss,-1,DATEADD(mm,DATEDIFF(mm,0,DATEADD(hh,-5,GETUTCDATE())),0))`;
+                                between ADD_MONTHS(TRUNC(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24), 'MM'),-1)
+                                and ADD_MONTHS(TRUNC(LAST_DAY(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24))),-1)`;
 
         return this.detInfoRepository.query(sql);
     }
 
     async getDetallesActual(data: DataI){
         let sql = `select	ID.*
-                        from INFORMACION.INFORMACION AS I 
-                            inner join INFORMACION.DETALLE_INFORMACION AS ID
-                                ON I.IDINFO = ID.IDINFO
-                            inner join PERSONA.ASIGNACION_PERSONA AS A
-                                ON A.IDASIGPER = I.IDASIG
-                        where A.IDPER = ${data.IDPER} 
-                            and I.FECINFO 
-                                between DATEADD(mm,DATEDIFF(mm,0,DATEADD(hh,-5,GETUTCDATE())),0)
-                                and DATEADD(ss,-1,DATEADD(mm,DATEDIFF(mm,0,DATEADD(hh,-5,GETUTCDATE()))+1,0))`;
+                    from INFORMACION I 
+                        inner join DETALLE_INFORMACION ID
+                            ON I.IDINFO = ID.IDINFO
+                        inner join ASIGNACION_PERSONA A
+                            ON A.IDASIGPER = I.IDASIG
+                    where A.IDPER = ${data.IDPER}
+                        and I.FECINFO 
+                            between TRUNC(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24), 'MM')
+                            and TRUNC(LAST_DAY(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24)))`;
 
         return this.detInfoRepository.query(sql);
     }

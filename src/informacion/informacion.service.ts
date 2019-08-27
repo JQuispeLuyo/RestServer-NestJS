@@ -9,25 +9,28 @@ export class InformacionService {
 
     constructor(
         @InjectRepository(Informacion)
-        private readonly informacionRepository:Repository<Informacion>,
-        ){}
+        private readonly informacionRepository: Repository<Informacion>,
+    ) { }
 
-    async getAllInformacion(){
+    async getAllInformacion() {
         return this.informacionRepository.find();
     }
 
-    async getCabecerasInformacion(data:DataI){
+    async getCabecerasInformacion(data: DataI) {
         let sql = `select	I.IDINFO,
                             I.IDASIG,
                             I.TOTAREDET,
                             I.ESTAINFO, 
                             A.IDSECT
-                        from INFORMACION.INFORMACION AS I 
-                            inner join PERSONA.ASIGNACION_PERSONA AS A
+                        from INFORMACION I 
+                            inner join ASIGNACION_PERSONA A
                                 ON A.IDASIGPER = I.IDASIG
-                        where A.IDPER = ${data.IDPER} and I.FECINFO between '${data.FECINFOP}' and '${data.FECINFOU}'`;
+                        where A.IDPER = ${data.IDPER}
+                        and I.FECINFO 
+                        between TRUNC(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24), 'MM') 
+                        and TRUNC(LAST_DAY(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24)))`;
 
         return this.informacionRepository.query(sql);
-    }  
-    
+    }
+
 }

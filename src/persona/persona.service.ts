@@ -49,7 +49,11 @@ export class PersonaService {
 
     async login(data: Credential): Promise<UserDto> {
         const { USERPER, PSWPER } = data;
-        const user = await this.personaRepository.findOne({ where: { USERPER } });
+        const user = await this.personaRepository.createQueryBuilder("user")
+        .where("user.USERPER = :USERPER", { USERPER })
+        .getOne();
+        console.log(USERPER);
+        //findOne({where: {USERPER: data.USERPER }});
         if (!user || !(await user.comparePassword(PSWPER))) {
             throw new HttpException(
                 'Invalid username/password',

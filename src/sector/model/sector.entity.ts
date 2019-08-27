@@ -2,7 +2,7 @@ import { AsignacionCultivo } from './../../asignacion-cultivo/model/asignacion-c
 import { AsignacionPersona } from './../../asignacion-persona/model/asignacion-persona.entity';
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 
-@Entity('UBICACION.SECTOR')
+@Entity('SECTOR')
 export class Sector{
 
     @PrimaryGeneratedColumn()

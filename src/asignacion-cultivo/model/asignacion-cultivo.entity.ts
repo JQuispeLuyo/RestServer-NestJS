@@ -1,7 +1,7 @@
 import { Sector } from './../../sector/model/sector.entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 
-@Entity('CULTIVO.ASIGNACION_CULTIVO')
+@Entity('ASIGNACION_CULTIVO')
 export class AsignacionCultivo{
 
     @PrimaryGeneratedColumn()

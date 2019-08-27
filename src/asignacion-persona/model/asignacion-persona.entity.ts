@@ -2,7 +2,7 @@ import { Sector } from './../../sector/model/sector.entity';
 import { Persona } from './../../persona/model/persona.entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 
-@Entity('PERSONA.ASIGNACION_PERSONA')
+@Entity('ASIGNACION_PERSONA')
 export class AsignacionPersona{
     @PrimaryGeneratedColumn()
     IDASIGPER:number;

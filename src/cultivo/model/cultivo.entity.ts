@@ -1,12 +1,12 @@
 import {Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity('CULTIVO.CULTIVO')
+@Entity('CULTIVO')
 export class Cultivo{
 
     @PrimaryGeneratedColumn()
     IDCUL: number;
 
-    @Column("varchar",{length:50})
+    @Column("varchar2",{length:50})
     NOMCUL: string
 
     @Column("char",{length:2})
