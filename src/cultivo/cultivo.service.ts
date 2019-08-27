@@ -16,11 +16,15 @@ export class CultivoService {
     }
 
     async getCultivo(IDCUL: number){
-        return this.cultivoRepository.find({IDCUL});
+        return this.cultivoRepository.createQueryBuilder("cultivo")
+        .where("cultivo.IDCUL = :IDCUL", {IDCUL}) 
+        .getOne();
     }
 
     async getTipCultivo(TIPCUL: string){
-        return this.cultivoRepository.find({TIPCUL});
+        return this.cultivoRepository.createQueryBuilder("cultivo")
+        .where("cultivo.TIPCUL = :TIPCUL", {TIPCUL}) 
+        .getOne();
     }
    
 }

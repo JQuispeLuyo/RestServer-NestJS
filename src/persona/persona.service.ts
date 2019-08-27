@@ -20,7 +20,12 @@ export class PersonaService {
     }
 
     async read(IDPER: number) {
-        let persona = await this.personaRepository.findOne({ where: { IDPER } });
+        let persona = await this.personaRepository.createQueryBuilder("persona")
+        .where("persona.IDPER = :IDPER", { IDPER })
+        .getOne();
+        
+        
+        //.findOne({ where: { IDPER } });
         return persona;
     }
 
@@ -52,7 +57,7 @@ export class PersonaService {
         const user = await this.personaRepository.createQueryBuilder("user")
         .where("user.USERPER = :USERPER", { USERPER })
         .getOne();
-        console.log(USERPER);
+        console.log(user.NOMPER);
         //findOne({where: {USERPER: data.USERPER }});
         if (!user || !(await user.comparePassword(PSWPER))) {
             throw new HttpException(

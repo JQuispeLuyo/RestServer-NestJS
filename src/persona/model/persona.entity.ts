@@ -9,10 +9,10 @@ export class Persona{
     @PrimaryGeneratedColumn()
     IDPER: number;
 
-    @Column("varchar",{length: 100})
+    @Column("varchar2",{length: 100})
     NOMPER: string;
 
-    @Column("varchar",{length: 100})
+    @Column("varchar2",{length: 100})
     APEPER: string;
 
     @Column("char",{length: 8})
@@ -27,10 +27,10 @@ export class Persona{
     @Column("char",{length: 1})
     ESTAPER: string;
 
-    @Column("varchar",{length: 30})
+    @Column("varchar2",{length: 30})
     USERPER: string;
 
-    @Column("varchar",{length: 500})
+    @Column("varchar2",{length: 500})
     PSWPER: string;
 
     @OneToMany(type => AsignacionPersona, asignacionPersona => asignacionPersona.persona)

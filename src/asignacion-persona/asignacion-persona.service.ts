@@ -15,7 +15,7 @@ export class AsignacionPersonaService {
     }
 
     async getAsignPersonaSector(IDPER){
-        return this.personaAsignacionRepository.find({relations: ['sector'],where: {IDPER: IDPER}});
+        //return this.personaAsignacionRepository.find({relations: ['sector'],where: {IDPER: IDPER}});
         let sql = `Select P.IDASIGPER,U.*
                         from ASIGNACION_PERSONA P
                             inner join SECTOR U

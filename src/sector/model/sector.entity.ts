@@ -8,10 +8,10 @@ export class Sector{
     @PrimaryGeneratedColumn()
     IDSECT: number;
 
-    @Column("varchar",{length: 100})
+    @Column("varchar2",{length: 100})
     NOMSECT: string;
 
-    @Column("decimal",{ precision: 7, scale: 2 })
+    @Column("number",{ precision: 7, scale: 2 })
     AREASECT: number;
 
     @Column()
