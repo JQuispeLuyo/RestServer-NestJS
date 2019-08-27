@@ -12,7 +12,10 @@ export class AsignacionCultivoService {
     ) { }
 
     async findAll(){
-        return this.asigCultivoRepository.find();
+        return this.asigCultivoRepository.createQueryBuilder("asignacionCultivos")
+        .innerJoinAndSelect("asignacionCultivos.cultivo", "cultivo") 
+        .innerJoinAndSelect("asignacionCultivos.sector", "sector")
+        .getMany();
     }
 
     async asigPersona(IDPER: string) {
@@ -21,19 +24,19 @@ export class AsignacionCultivoService {
                             AC.IDASIGCUL,
                             U.IDSECT,
                             C.*
-                    FROM    PERSONA.ASIGNACION_PERSONA AS A 
-                            INNER JOIN PERSONA.PERSONA AS P 
+                    FROM    ASIGNACION_PERSONA A 
+                            INNER JOIN PERSONA P 
                                 ON A.IDPER = P.IDPER 
-                            INNER JOIN UBICACION.SECTOR AS U 
+                            INNER JOIN SECTOR U 
                                 ON A.IDSECT = U.IDSECT
-                            INNER JOIN	CULTIVO.ASIGNACION_CULTIVO as AC
+                            INNER JOIN ASIGNACION_CULTIVO AC
                                 ON AC.IDSECT = U.IDSECT
-                            inner join CULTIVO.CULTIVO as C
+                            inner join CULTIVO C
                                 on AC.IDCUL = C.IDCUL
                     where P.IDPER=${IDPER} and AC.ESTAASIGCUL = 'A'`;
 
         const asig = await this.asigCultivoRepository.query(query);
         return asig;
     }
-
+    
 }

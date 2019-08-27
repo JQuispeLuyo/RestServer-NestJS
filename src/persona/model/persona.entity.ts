@@ -33,8 +33,8 @@ export class Persona{
     @Column("varchar2",{length: 500})
     PSWPER: string;
 
-    @OneToMany(type => AsignacionPersona, asignacionPersona => asignacionPersona.persona)
-    asignacionPersona: AsignacionPersona[];
+    @OneToMany(type => AsignacionPersona, asignacionPersonas => asignacionPersonas.persona)
+    asignacionPersonas: AsignacionPersona[];
 
     toResponseObjet(showToken: boolean = true): UserDto{
         const { IDPER, NOMPER, APEPER, DNIPER, TELPER, TIPPER, ESTAPER, USERPER, token} = this;

@@ -1,5 +1,5 @@
 import { SectorService } from './sector.service';
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
 @Controller('sector')
 export class SectorController {
@@ -9,6 +9,11 @@ export class SectorController {
     @Get()
     getAllSector(){
         return this.sectorService.getAll();
+    }
+
+    @Get("/cultivos")
+    getCutivosSector(){
+        return this.sectorService.getCultivosAsignados();
     }
 
 }

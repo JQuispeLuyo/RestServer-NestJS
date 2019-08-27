@@ -24,10 +24,10 @@ export class Sector{
     ESTSECT: string;
 
 
-    @OneToMany(type => AsignacionPersona, asignacionPersona => AsignacionPersona)
-    asignacionPersona:AsignacionPersona;
+    @OneToMany(type => AsignacionPersona, asignacionPersona => asignacionPersona.sector)
+    asignacionPersonas:AsignacionPersona[];
 
     @OneToMany(type => AsignacionCultivo, asignacionCultivo => asignacionCultivo.sector)
-    asignacionCultivo: AsignacionCultivo;
+    asignacionCultivos: AsignacionCultivo[];
 
 }

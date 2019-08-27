@@ -16,11 +16,4 @@ export class AsignacionPersonaController {
         return this.asigPersonaService.getAsignPersonaSector(IDPER);
     }
     
-    
-    // @Get(':IDPER')
-    // getCultivosAsig(@Param('IDPER') IDPER: string){
-    //     console.log(IDPER);
-    //     return this.asigPersonaService.asignacion(IDPER);
-    // }
-
 }

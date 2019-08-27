@@ -10,20 +10,14 @@ export class AsignacionPersona{
     @Column()
     FECASIG: Date;
 
-    @Column()
-    IDSECT:number;
-
-    @Column()
-    IDPER:number; 
-
     @Column("char", {length:1})
     ESTASIGPER;
 
-    @ManyToOne(type=> Sector, sector => sector.asignacionPersona)
+    @ManyToOne(type=> Sector, sector => sector.asignacionPersonas)
     @JoinColumn({ name: "IDSECT" })
     sector: Sector;
 
-    @ManyToOne(type=> Persona, persona => persona.asignacionPersona)
+    @ManyToOne(type=> Persona, persona => persona.asignacionPersonas)
     @JoinColumn({ name: "IDPER" })
     persona: Persona;
 }

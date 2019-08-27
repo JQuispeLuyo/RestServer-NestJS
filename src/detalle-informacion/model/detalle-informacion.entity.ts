@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn } from 'typeorm';
 
 @Entity("DETALLE_INFORMACION")
 export class DetalleInformacion{
@@ -6,7 +6,7 @@ export class DetalleInformacion{
     @PrimaryGeneratedColumn()
     IDDETINFO: number;
 
-    @Column()
+    @JoinColumn()
     IDINFO: number;
 
     @Column()

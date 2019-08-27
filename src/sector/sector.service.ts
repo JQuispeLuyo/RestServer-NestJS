@@ -8,12 +8,21 @@ export class SectorService {
 
     constructor(
         @InjectRepository(Sector)
-        private readonly personaRepository: Repository<Sector>,
+        private readonly sectorRepository: Repository<Sector>,
     ) { }
 
 
     async getAll() {
-        return this.personaRepository.find();
+        return this.sectorRepository.find();
+    }
+
+    async getCultivosAsignados(){
+        return this.sectorRepository.createQueryBuilder("sector")
+        .innerJoinAndSelect("sector.asignacionCultivos", "asignacionCultivos")
+        .innerJoinAndSelect("asignacionCultivos.cultivo", "cultivo") 
+        .innerJoinAndSelect("sector.asignacionPersonas", "asignacionPersonas") 
+        .innerJoinAndSelect("asignacionPersonas.persona", "persona") 
+        .getMany();
     }
 
 }

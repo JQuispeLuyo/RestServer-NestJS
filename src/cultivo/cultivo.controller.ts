@@ -22,4 +22,10 @@ export class CultivoController {
         return this.cultivoService.getTipCultivo(TIPCUL);
     }
 
+    @Get('sector/:IDSECT')
+    getSectorCultivo(@Param('IDSECT') IDSECT: string){
+        console.log(IDSECT);
+        return this.cultivoService.getCultivosAsignados(IDSECT);
+    }
+
 }

@@ -1,4 +1,5 @@
-import {Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
+import { AsignacionCultivo } from './../../asignacion-cultivo/model/asignacion-cultivo.entity';
 
 @Entity('CULTIVO')
 export class Cultivo{
@@ -14,4 +15,7 @@ export class Cultivo{
 
     @Column("char", {length:1})
     ESTACUL: string
+
+    @OneToMany(type => AsignacionCultivo, asignacionCultivos => asignacionCultivos.cultivo)
+    asignacionCultivos: AsignacionCultivo[];
 }

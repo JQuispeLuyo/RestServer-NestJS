@@ -79,4 +79,15 @@ export class PersonaService {
         return user.toResponseObjet();
     }
 
+
+    async getCultivosAsignados(){
+        return this.personaRepository.createQueryBuilder("persona")
+        .innerJoinAndSelect("persona.asignacionPersonas", "asignacionPersonas")
+        .innerJoinAndSelect("asignacionPersonas.sector", "sector") 
+        .innerJoinAndSelect("sector.asignacionCultivos", "asignacionCultivos") 
+        .innerJoinAndSelect("asignacionCultivos.cultivo", "cultivo") 
+        .getMany();
+
+    }
+
 }

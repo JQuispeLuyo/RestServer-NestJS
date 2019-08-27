@@ -25,6 +25,6 @@ export class CultivoService {
         return this.cultivoRepository.createQueryBuilder("cultivo")
         .where("cultivo.TIPCUL = :TIPCUL", {TIPCUL}) 
         .getOne();
-    }
-   
+    } 
+
 }

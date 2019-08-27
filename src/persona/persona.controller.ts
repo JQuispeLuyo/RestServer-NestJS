@@ -23,6 +23,11 @@ export class PersonaController {
         return await this.personaService.findAll();
     }
 
+    @Get('/cultivos')
+    async getCultivosPersona(){
+        return await this.personaService.getCultivosAsignados();
+    }
+
     @Get(':IDPER')
     async getPersona(@Param('IDPER') IDPER: string): Promise<Persona> {
         return await this.personaService.read(parseInt(IDPER));

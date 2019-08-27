@@ -30,6 +30,8 @@ export class InformacionService {
                         between TRUNC(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24), 'MM') 
                         and TRUNC(LAST_DAY(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24)))`;
 
+        // return this.informacionRepository.createQueryBuilder("informacion")
+        // .innerJoin("informacion.IDASIG", "IDASIGPER");
         return this.informacionRepository.query(sql);
     }
 
