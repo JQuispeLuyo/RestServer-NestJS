@@ -37,18 +37,30 @@ export class PersonaService {
 
     async update(IDPER: number, data: Partial<PersonaDto>) {
         await this.personaRepository.update({ IDPER }, data);
-        const persona = await this.personaRepository.findOne({ where: { IDPER } });
+        const persona = await this.personaRepository.createQueryBuilder("persona")
+        .where("persona.IDPER = :IDPER", { IDPER })
+        .getOne();
+        
+        //.findOne({ where: { IDPER } });
         return persona;
     }
 
     async delete(IDPER: number) {
-        const persona = await this.personaRepository.findOne({ where: { IDPER } });
+        const persona = await this.personaRepository.createQueryBuilder("persona")
+        .where("persona.IDPER = :IDPER", { IDPER })
+        .getOne();
+        
+        //.findOne({ where: { IDPER } });
         await this.personaRepository.delete({ IDPER });
         return persona;
     }
 
     async findByUserName(USERPER: string) {
-        const userName = await this.personaRepository.findOne({ where: { USERPER } });
+        const userName = await this.personaRepository.createQueryBuilder("persona")
+        .where("persona.USERPER = :USERPER", { USERPER })
+        .getOne();
+        
+        //.findOne({ where: { USERPER } });
         return userName;
     }
 

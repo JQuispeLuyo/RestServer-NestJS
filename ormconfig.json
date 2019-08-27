@@ -8,5 +8,5 @@
     "database": "TEAM08",
     "synchronize": false,
     "logging": true,
-    "entities": ["src/**/**.entity{.ts,.js}"]
+    "entities": ["dist/**/**.entity{.ts,.js}"]
 }
