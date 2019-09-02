@@ -19,18 +19,18 @@ export class AsignacionPersonaService {
 
     async getAsignPersonaSector(IDPER){
         //return this.personaAsignacionRepository.find({relations: ['sector'],where: {IDPER: IDPER}});
-        let sql = `Select P.IDASIGPER,U.*
-                        from ASIGNACION_PERSONA P
-                            inner join SECTOR U
-                                ON P.IDSECT = U.IDSECT
-                        where P.IDPER = ${IDPER} and ESTASIGPER = 'A'`;
+        // let sql = `Select P.IDASIGPER,U.*
+        //                 from ASIGNACION_PERSONA P
+        //                     inner join SECTOR U
+        //                         ON P.IDSECT = U.IDSECT
+        //                 where P.IDPER = ${IDPER} and ESTASIGPER = 'A'`;
 
-        // return this.personaRepository.createQueryBuilder("persona")
-        // .innerJoinAndSelect("persona.asignacionPersonas", "asignacionPersonas")
-        // .innerJoinAndSelect("asignacionPersonas.sector", "sector")
-        // .where("persona.IDPER = :IDPER", {IDPER})
-        // .getMany();
-        return this.personaAsignacionRepository.query(sql);
+        return this.personaRepository.createQueryBuilder("persona")
+        .innerJoinAndSelect("persona.asignacionPersonas", "asignacionPersonas")
+        .innerJoinAndSelect("asignacionPersonas.sector", "sector")
+        .where("persona.IDPER = :IDPER", {IDPER})
+        .getMany();
+        //return this.personaAsignacionRepository.query(sql);
     }
 
 }
