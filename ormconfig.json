@@ -1,11 +1,8 @@
 {
     "type": "oracle",
-    "host": "137.135.84.103",
-    "port": 1521,
-    "sid": "XE",
     "username": "TEAM08",
     "password": "CropAW-Pass",
-    "database": "TEAM08",
+    "connectString" : "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=137.135.84.103)(PORT=1521))(CONNECT_DATA=(SID=XE)))",
     "synchronize": false,
     "logging": true,
     "entities": ["dist/**/**.entity{.ts,.js}"]
