@@ -30,6 +30,7 @@
         "@nestjs/typeorm": "^6.0.0",
         "jsonwebtoken": "^8.5.1",
         "md5": "^2.2.1",
+        "oracledb": "^4.0.1",
         "passport-jwt": "^4.0.0",
         "reflect-metadata": "^0.1.12",
         "rimraf": "^2.6.2",
