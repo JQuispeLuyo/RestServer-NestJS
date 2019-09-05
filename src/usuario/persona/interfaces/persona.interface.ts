@@ -1,4 +1,4 @@
-export interface Persona {
+export interface IPersona {
     IDPER?: number;
     NOMPER: string;
     APEPER: string;

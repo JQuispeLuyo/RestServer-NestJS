@@ -1,4 +1,4 @@
-import { Sector } from './../../sector/model/sector.entity';
+import { Sector } from '../../../sector/model/sector.entity';
 import { Persona } from './../../persona/model/persona.entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 

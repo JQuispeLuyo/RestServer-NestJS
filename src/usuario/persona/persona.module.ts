@@ -6,10 +6,9 @@ import { Persona } from './model/persona.entity';
 
 
 @Module({
-    imports: [
-        TypeOrmModule.forFeature([Persona]),  
-    ],
+    imports: [TypeOrmModule.forFeature([Persona]),],
     controllers: [PersonaController],
+    exports:[PersonaService],
     providers: [PersonaService]
 })
 export class PersonaModule { }

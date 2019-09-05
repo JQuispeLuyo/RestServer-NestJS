@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Persona } from './model/persona.entity';
 import { PersonaDto } from './dto/persona.dto';
 import { Repository } from 'typeorm';
-import { UserDto, Credential } from './dto/user.dto';
 
 @Injectable()
 export class PersonaService {
@@ -59,26 +58,8 @@ export class PersonaService {
         const userName = await this.personaRepository.createQueryBuilder("persona")
         .where("persona.USERPER = :USERPER", { USERPER })
         .getOne();
-        
-        //.findOne({ where: { USERPER } });
         return userName;
     }
-
-    async login(data: Credential): Promise<UserDto> {
-        const { USERPER, PSWPER } = data;
-        const user = await this.personaRepository.createQueryBuilder("user")
-        .where("user.USERPER = :USERPER", { USERPER })
-        .getOne();
-        console.log(user.NOMPER);
-        //findOne({where: {USERPER: data.USERPER }});
-        if (!user || !(await user.comparePassword(PSWPER))) {
-            throw new HttpException(
-                'Invalid username/password',
-                HttpStatus.BAD_REQUEST);
-        }
-        return user.toResponseObjet();
-    }
-
 
     async getCultivosAsignados(){
         return this.personaRepository.createQueryBuilder("persona")
