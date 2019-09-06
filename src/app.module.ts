@@ -7,10 +7,12 @@ import { DetalleInformacionModule } from './detalle-informacion/detalle-informac
 import { AsignacionCultivoModule } from './asignacion-cultivo/asignacion-cultivo.module';
 import { SectorModule } from './sector/sector.module';
 import { InformacionModule } from './informacion/informacion.module';
-import { UsuarioModule } from './usuario/usuario.module';
+import { UsuarioModule } from './usuario/usuario.module';;
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), CultivoModule, DetalleInformacionModule, AsignacionCultivoModule, SectorModule, InformacionModule, UsuarioModule,],
+  imports: [TypeOrmModule.forRoot(), 
+    CultivoModule, DetalleInformacionModule, AsignacionCultivoModule, 
+    SectorModule, InformacionModule, UsuarioModule,],
   controllers: [AppController],
   providers: [AppService],
 })

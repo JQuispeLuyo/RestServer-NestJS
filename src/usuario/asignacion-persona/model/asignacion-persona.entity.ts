@@ -7,6 +7,12 @@ export class AsignacionPersona{
     @PrimaryGeneratedColumn()
     IDASIGPER:number;
 
+    @Column({name: "IDPER"})
+    IDPER: number;
+
+    @Column({name: "IDSECT"})
+    IDSECT: number;
+
     @Column()
     FECASIG: Date;
 

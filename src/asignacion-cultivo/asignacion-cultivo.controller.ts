@@ -11,10 +11,4 @@ export class AsignacionCultivoController {
     async findAll(){
         return this.asigCultivoService.findAll();
     }
-    
-    @Get('persona/:IDPER')
-    async findCultivo(@Param('IDPER') IDPER:string){
-        return this.asigCultivoService.asigPersona(IDPER);
-    }
-
 }

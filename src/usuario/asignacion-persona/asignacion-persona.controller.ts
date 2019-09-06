@@ -6,14 +6,18 @@ export class AsignacionPersonaController {
 
     constructor(private asigPersonaService:AsignacionPersonaService){}
 
-    @Get()
-    async finAll(){
-        return this.asigPersonaService.getAllAsignacionPersona();
+    @Get('sector-cultivo/:IDPER')
+    async finSectorCultivo(@Param('IDPER') IDPER:string){
+        return this.asigPersonaService.getAsignPersonaSectorCultivo(IDPER);
     }
 
     @Get('sector/:IDPER')
     async finSector(@Param('IDPER') IDPER:string){
         return this.asigPersonaService.getAsignPersonaSector(IDPER);
     }
-    
+
+    @Get()
+    async finAll(){
+        return this.asigPersonaService.getAllAsignacionPersona();
+    }
 }
