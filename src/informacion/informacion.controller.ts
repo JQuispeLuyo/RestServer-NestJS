@@ -12,6 +12,11 @@ export class InformacionController {
         return this.informacionService.getAllInformacion();
     }
 
+    @Get('nuevo')
+    async getAllInformacion1(){
+        return this.informacionService.getInformacionRel();
+    }
+
     @Post('cabecera')
     async getCabeceraInformacion(@Body() data:DataI){
         return this.informacionService.getCabecerasInformacion(data);

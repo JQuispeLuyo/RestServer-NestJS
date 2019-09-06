@@ -35,4 +35,12 @@ export class InformacionService {
         return this.informacionRepository.query(sql);
     }
 
+    async getInformacionRel() {
+        return this.informacionRepository.createQueryBuilder("informacion")
+        .innerJoinAndSelect("informacion.detalleInformacion", "detalleInformacion")
+        .getOne();
+        // return this.informacionRepository.createQueryBuilder("informacion")
+        // .innerJoin("informacion.IDASIG", "IDASIGPER");
+       //return this.informacionRepository.query(sql);
+    }
 }

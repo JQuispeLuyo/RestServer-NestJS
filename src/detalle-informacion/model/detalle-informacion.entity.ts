@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne } from 'typeorm';
+import { Informacion } from './../../informacion/model/informacion.entity';
 
 @Entity("DETALLE_INFORMACION")
 export class DetalleInformacion{
@@ -6,7 +7,7 @@ export class DetalleInformacion{
     @PrimaryGeneratedColumn()
     IDDETINFO: number;
 
-    @JoinColumn()
+    @Column({name: "IDINFO"})
     IDINFO: number;
 
     @Column()
@@ -52,5 +53,9 @@ export class DetalleInformacion{
     VALDET:	string;
 
     @Column("char", {length:1})
-    ESTADETINFO: string
+    ESTADETINFO: string;
+
+    @ManyToOne(type => Informacion, informacion => informacion.detalleInformacion)
+    @JoinColumn({name: "IDINFO"})
+    informacion: Informacion;
 }

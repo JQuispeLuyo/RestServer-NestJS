@@ -18,9 +18,16 @@ export class DetalleInformacionService {
         return await this.detInfoRepository.find();
     }
 
+    async finById(IDINFO: number){
+        return await this.detInfoRepository.createQueryBuilder("informacion")
+        .where("informacion.IDINFO = :IDINFO",{IDINFO})
+        .getOne();
+    }
+
     async create(data: Partial<DetalleInformacionDto>){
 
         const detalleInformacion = await this.detInfoRepository.create(data);
+        console.log(detalleInformacion);
         await this.detInfoRepository.save(detalleInformacion);
         return detalleInformacion;
     }

@@ -17,7 +17,6 @@ export class DetalleInformacionController {
 
     @Post()
     async createDetalleInformacion(@Body() detInfo: DetalleInformacionDto){
-        console.log(detInfo);
         return await this.detInfoService.create(detInfo);
     }
 

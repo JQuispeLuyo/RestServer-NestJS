@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { DetalleInformacion } from "./../../detalle-informacion/model/detalle-informacion.entity";
 
 @Entity('INFORMACION')
 export class Informacion{
@@ -20,5 +21,7 @@ export class Informacion{
     @Column("char",{length:1})
     ESTAINFO: string;
 
-
+    @OneToMany(type => DetalleInformacion, detalleInformacion => detalleInformacion.informacion)
+    detalleInformacion: DetalleInformacion[];
+    
 }
