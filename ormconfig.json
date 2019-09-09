@@ -5,5 +5,5 @@
     "connectString" : "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=137.135.84.103)(PORT=1521))(CONNECT_DATA=(SID=XE)))",
     "synchronize": false,
     "logging": true,
-    "entities": ["src/**/**.entity{.ts,.js}"]
+    "entities": ["dist/**/**.entity{.ts,.js}"]
 }
