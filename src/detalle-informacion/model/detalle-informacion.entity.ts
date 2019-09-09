@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, JoinColumn, ManyToOne } from 'typeorm';
 import { Informacion } from './../../informacion/model/informacion.entity';
+import { AsignacionCultivo } from './../../asignacion-cultivo/model/asignacion-cultivo.entity';
 
 @Entity("DETALLE_INFORMACION")
 export class DetalleInformacion{
@@ -58,4 +59,8 @@ export class DetalleInformacion{
     @ManyToOne(type => Informacion, informacion => informacion.detalleInformacion)
     @JoinColumn({name: "IDINFO"})
     informacion: Informacion;
+
+    @ManyToOne(type => AsignacionCultivo, AsignacionCultivo => AsignacionCultivo.detalleInformacion)
+    @JoinColumn({name: "IDASIGCUL"})
+    AsignacionCultivo: AsignacionCultivo[];
 }

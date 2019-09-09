@@ -1,6 +1,7 @@
 import { Sector } from '../../../sector/model/sector.entity';
 import { Persona } from './../../persona/model/persona.entity';
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from "typeorm";
+import { Informacion } from './../../../informacion/model/informacion.entity';
 
 @Entity('ASIGNACION_PERSONA')
 export class AsignacionPersona{
@@ -26,4 +27,7 @@ export class AsignacionPersona{
     @ManyToOne(type=> Persona, persona => persona.asignacionPersonas)
     @JoinColumn({ name: "IDPER" })
     persona: Persona;
+
+    @OneToMany(type=> Informacion, informacion => informacion.asignacionPersona)
+    informacion: Informacion[];
 }

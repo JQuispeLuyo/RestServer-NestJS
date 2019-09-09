@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne, JoinColumn } from "typeorm";
 import { DetalleInformacion } from "./../../detalle-informacion/model/detalle-informacion.entity";
+import { AsignacionPersona } from "./../../usuario/asignacion-persona/model/asignacion-persona.entity";
 
 @Entity('INFORMACION')
 export class Informacion{
@@ -23,5 +24,9 @@ export class Informacion{
 
     @OneToMany(type => DetalleInformacion, detalleInformacion => detalleInformacion.informacion)
     detalleInformacion: DetalleInformacion[];
+
+    @ManyToOne(type=> AsignacionPersona, asignacionPersona => asignacionPersona.informacion)
+    @JoinColumn({name: "IDASIG"})
+    asignacionPersona: AsignacionPersona;
     
 }
