@@ -16,7 +16,7 @@ export class DetalleInformacionController {
     }
 
     @Post()
-    async createDetalleInformacion(@Body() detInfo: DetalleInformacionDto){
+    async createDetalleInformacion(@Body() detInfo: DetalleInformacionDto[]){
         return await this.detInfoService.create(detInfo);
     }
 
