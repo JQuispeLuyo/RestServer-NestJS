@@ -10,7 +10,15 @@ import { InformacionModule } from './informacion/informacion.module';
 import { UsuarioModule } from './usuario/usuario.module';;
 
 @Module({
-  imports: [TypeOrmModule.forRoot(), 
+  imports: [TypeOrmModule.forRoot({
+        "type": "oracle",
+        "username": "TEAM08",
+        "password": "CropAW-Pass",
+        "connectString" : "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=137.135.84.103)(PORT=1521))(CONNECT_DATA=(SID=XE)))",
+        "synchronize": false,
+        "logging": true,
+        "entities": [__dirname + '/**/**.entity{.ts,.js}']
+    }), 
     CultivoModule, DetalleInformacionModule, AsignacionCultivoModule, 
     SectorModule, InformacionModule, UsuarioModule,],
   controllers: [AppController],
