@@ -34,6 +34,29 @@ export class AsignacionPersonaService {
         //return this.personaAsignacionRepository.query(sql);
     }
 
+    async getAsignaciones(IDPER){
+
+        return this.personaAsignacionRepository.createQueryBuilder("asignacionPersonas")
+        .innerJoinAndSelect("asignacionPersonas.informacion", "informacion")
+        .innerJoinAndSelect("informacion.detalleInformacion", "detalleInformacion")
+        .innerJoinAndSelect("asignacionPersonas.sector", "sector")
+        .innerJoinAndSelect("sector.asignacionCultivos", "asignacionCultivos")
+        .innerJoinAndSelect("asignacionCultivos.cultivo", "cultivo")
+        .where("informacion.FECINFO between TRUNC(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24), 'MM') and TRUNC(LAST_DAY(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24)))")
+        .andWhere("asignacionPersonas.IDPER = :IDPER", {IDPER})
+        .andWhere("asignacionPersonas.ESTASIGPER = :ESTASIGPER", {ESTASIGPER: "A"})
+        .getMany();
+
+        // return this.personaAsignacionRepository.createQueryBuilder("asignacionPersonas")
+        // .innerJoinAndSelect("asignacionPersonas.sector", "sector")
+        // .innerJoinAndSelect("sector.asignacionCultivos", "asignacionCultivos")
+        // .innerJoinAndSelect("asignacionCultivos.cultivo", "cultivo")
+        // .where("asignacionPersonas.IDPER = :IDPER", {IDPER})
+        // .andWhere("asignacionPersonas.ESTASIGPER = :ESTASIGPER", {ESTASIGPER: "A"})
+        // .getMany();
+        //return this.personaAsignacionRepository.query(sql);
+    }
+
     async getInformacionRel(IDPER: number) {
         return this.personaAsignacionRepository.createQueryBuilder("asignacionPersonas")
         .innerJoinAndSelect("asignacionPersonas.informacion", "informacion")

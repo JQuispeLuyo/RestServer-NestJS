@@ -6,6 +6,11 @@ export class AsignacionPersonaController {
 
     constructor(private asigPersonaService:AsignacionPersonaService){}
 
+    @Get('asignaciones/:IDPER')
+    async findAsignaciones(@Param('IDPER') IDPER:number){
+        return this.asigPersonaService.getAsignaciones(IDPER);
+    }
+
     @Get('sector-cultivo/:IDPER')
     async findSectorCultivo(@Param('IDPER') IDPER:string){
         return this.asigPersonaService.getAsignPersonaSectorCultivo(IDPER);
