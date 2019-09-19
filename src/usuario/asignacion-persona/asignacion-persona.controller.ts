@@ -16,9 +16,14 @@ export class AsignacionPersonaController {
         return this.asigPersonaService.getAsignPersonaSectorCultivo(IDPER);
     }
 
-    @Get('informacion/:IDPER')
+    // @Get('informacion/:IDPER')
+    // async findInformacion(@Param('IDPER') IDPER:number){
+    //     return this.asigPersonaService.getInformacionRel(IDPER);
+    // }
+
+    @Get('nuevo/:IDPER')
     async findInformacion(@Param('IDPER') IDPER:number){
-        return this.asigPersonaService.getInformacionRel(IDPER);
+        return this.asigPersonaService.getNuevo(IDPER);
     }
 
     @Get('sector/:IDPER')

@@ -57,14 +57,28 @@ export class AsignacionPersonaService {
         //return this.personaAsignacionRepository.query(sql);
     }
 
-    async getInformacionRel(IDPER: number) {
+    async getNuevo(IDPER: number) {
         return this.personaAsignacionRepository.createQueryBuilder("asignacionPersonas")
-        .innerJoinAndSelect("asignacionPersonas.informacion", "informacion")
-        .innerJoinAndSelect("informacion.detalleInformacion", "detalleInformacion")
+        .innerJoinAndSelect("asignacionPersonas.sector", "sector")
+        .innerJoinAndSelect("sector.asignacionCultivos", "asignacionCultivos")
+        .innerJoinAndSelect("asignacionCultivos.cultivo", "cultivo")
+        .innerJoinAndSelect("asignacionCultivos.detalleInformacion", "detalleInformacion")
+        .innerJoinAndSelect("detalleInformacion.informacion", "informacion")
         .where("informacion.FECINFO between TRUNC(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24), 'MM') and TRUNC(LAST_DAY(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24)))")
         .andWhere("asignacionPersonas.IDPER = :IDPER", {IDPER})
-        .getMany()
+        .andWhere("asignacionPersonas.ESTASIGPER = :ESTASIGPER", {ESTASIGPER: "A"})
+        .getMany();
        //return this.informacionRepository.query(sql);
     }
+
+    // async getInformacionRel(IDPER: number) {
+    //     return this.personaAsignacionRepository.createQueryBuilder("asignacionPersonas")
+    //     .innerJoinAndSelect("asignacionPersonas.informacion", "informacion")
+    //     .innerJoinAndSelect("informacion.detalleInformacion", "detalleInformacion")
+    //     .where("informacion.FECINFO between TRUNC(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24), 'MM') and TRUNC(LAST_DAY(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24)))")
+    //     .andWhere("asignacionPersonas.IDPER = :IDPER", {IDPER})
+    //     .getMany()
+    //    //return this.informacionRepository.query(sql);
+    // }
 
 }
