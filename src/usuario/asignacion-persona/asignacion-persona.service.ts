@@ -71,14 +71,14 @@ export class AsignacionPersonaService {
        //return this.informacionRepository.query(sql);
     }
 
-    // async getInformacionRel(IDPER: number) {
-    //     return this.personaAsignacionRepository.createQueryBuilder("asignacionPersonas")
-    //     .innerJoinAndSelect("asignacionPersonas.informacion", "informacion")
-    //     .innerJoinAndSelect("informacion.detalleInformacion", "detalleInformacion")
-    //     .where("informacion.FECINFO between TRUNC(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24), 'MM') and TRUNC(LAST_DAY(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24)))")
-    //     .andWhere("asignacionPersonas.IDPER = :IDPER", {IDPER})
-    //     .getMany()
-    //    //return this.informacionRepository.query(sql);
-    // }
+    async getInformacionRel(IDPER: number) {
+        return this.personaAsignacionRepository.createQueryBuilder("asignacionPersonas")
+        .innerJoinAndSelect("asignacionPersonas.informacion", "informacion")
+        .innerJoinAndSelect("informacion.detalleInformacion", "detalleInformacion")
+        .where("informacion.FECINFO between TRUNC(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24), 'MM') and TRUNC(LAST_DAY(CAST(sys_extract_utc(SYSTIMESTAMP) AS DATE)-(5/24)))")
+        .andWhere("asignacionPersonas.IDPER = :IDPER", {IDPER})
+        .getMany()
+       //return this.informacionRepository.query(sql);
+    }
 
 }

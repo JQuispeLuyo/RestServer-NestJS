@@ -1,7 +1,8 @@
 import { DataI } from './../informacion/interfaces/interfaces';
 import { DetalleInformacionDto } from './dto/detalle-informacion.dto';
 import { DetalleInformacionService } from './detalle-informacion.service';
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('detalle-informacion')
 export class DetalleInformacionController {
@@ -15,6 +16,7 @@ export class DetalleInformacionController {
         return this.detInfoService.findAll();
     }
 
+    @UseGuards(AuthGuard('jwt'))
     @Post()
     async createDetalleInformacion(@Body() detInfo: DetalleInformacionDto[]){
         return await this.detInfoService.create(detInfo);
