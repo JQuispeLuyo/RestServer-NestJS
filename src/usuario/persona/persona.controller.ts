@@ -2,8 +2,8 @@ import { Controller, Get, Post, Put, Delete, Body, Param, UseGuards } from '@nes
 import { PersonaDto } from './dto/persona.dto';
 import { IPersona } from './interfaces/persona.interface';
 import { PersonaService } from './persona.service';
-import { AuthGuard } from './../../shared/auth.guard';
 import { User } from './persona.decorator';
+import { AuthGuard } from '@nestjs/passport';
 
 
 @Controller('persona')
@@ -11,8 +11,8 @@ export class PersonaController {
 
     constructor(private personaService: PersonaService) { }
 
+    @UseGuards(AuthGuard('jwt'))
     @Get()
-    @UseGuards(new AuthGuard())
     async getPersonas(@User() user): Promise<IPersona[]> {
         return await this.personaService.findAll();
     }
