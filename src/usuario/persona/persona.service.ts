@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Persona } from './model/persona.entity';
 import { PersonaDto } from './dto/persona.dto';
 import { Repository } from 'typeorm';
+var md5 = require('md5');
 
 @Injectable()
 export class PersonaService {
@@ -35,12 +36,14 @@ export class PersonaService {
     }
 
     async update(IDPER: number, data: Partial<PersonaDto>) {
+        if(data.PSWPER !== undefined && data.PSWPER !== ""){
+            data.PSWPER = md5(data.PSWPER);
+        }
         await this.personaRepository.update({ IDPER }, data);
+
         const persona = await this.personaRepository.createQueryBuilder("persona")
         .where("persona.IDPER = :IDPER", { IDPER })
         .getOne();
-        
-        //.findOne({ where: { IDPER } });
         return persona;
     }
 
